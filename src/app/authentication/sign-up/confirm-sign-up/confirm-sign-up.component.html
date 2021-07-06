@@ -1,0 +1,25 @@
+<h1>Confirm Sign up</h1>
+<form [formGroup]="this.form" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="username" #username>Username</label>
+    <input
+      [id]="username.attributes.getNamedItem('for')"
+      type="text"
+      [placeholder]="username.textContent"
+      formControlName="username"
+    />
+  </div>
+  <div id="code">
+    <div>
+      <label for="code" #confirmCode>Confirmation code</label>
+      <input [id]="confirmCode.attributes.getNamedItem('for')" type="number" formControlName="code" />
+    </div>
+    <div>Lost your code? <a href="#">Resend code</a>.</div>
+  </div>
+  <aside>
+    <div>Already have an account? Sign in <a [routerLink]="'/authentication/sign-in'">here</a>.</div>
+  </aside>
+  <footer>
+    <button type="submit">Confirm</button>
+  </footer>
+</form>

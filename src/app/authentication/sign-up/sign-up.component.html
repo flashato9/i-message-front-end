@@ -1,0 +1,31 @@
+<h1>Create a new account</h1>
+<form [formGroup]="this.form" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="username" #username>Username</label>
+    <input
+      [id]="username.attributes.getNamedItem('for')"
+      type="text"
+      [placeholder]="username.textContent"
+      formControlName="username"
+    />
+  </div>
+  <div>
+    <label for="password" #password>Password</label>
+    <input
+      [id]="password.attributes.getNamedItem('for')"
+      type="text"
+      [placeholder]="password.textContent"
+      formControlName="password"
+    />
+  </div>
+  <div>
+    <label for="email" #email>Email Address</label>
+    <input [id]="email.attributes.getNamedItem('for')" type="text" [placeholder]="email.textContent" formControlName="email" />
+  </div>
+  <aside>
+    <div>Already have an account? Sign in <a [routerLink]="'/authentication/sign-in'">here</a>.</div>
+  </aside>
+  <footer>
+    <button type="submit">Create Account</button>
+  </footer>
+</form>

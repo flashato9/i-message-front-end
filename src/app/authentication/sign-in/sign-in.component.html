@@ -1,0 +1,28 @@
+<h1>Sign-in to your account</h1>
+<form [formGroup]="this.form" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="username" #username>Username</label>
+    <input
+      [id]="username.attributes.getNamedItem('for')"
+      type="text"
+      [placeholder]="username.textContent"
+      formControlName="username"
+    />
+  </div>
+  <div>
+    <label for="password" #password>Password</label>
+    <input
+      [id]="password.attributes.getNamedItem('for')"
+      type="password"
+      [placeholder]="password.textContent"
+      formControlName="password"
+    />
+  </div>
+  <aside>
+    <div>Forgot your password? <a [routerLink]="'./reset-password'">Reset password</a>.</div>
+    <div>No account? <a [routerLink]="'../sign-up'">Create account</a>.</div>
+  </aside>
+  <footer>
+    <button type="submit">Sign-in</button>
+  </footer>
+</form>
