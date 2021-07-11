@@ -7,7 +7,10 @@
       type="text"
       [placeholder]="username.textContent"
       formControlName="username"
+      (focus)="this.usernameFocused = true"
+      (blur)="this.usernameFocused = false"
     />
+    <input-errors [hideErrors]="this.usernameFocused" [control]="this.form.controls.username"> </input-errors>
   </div>
   <div>
     <label for="password" #password>Password</label>
@@ -16,16 +19,30 @@
       type="text"
       [placeholder]="password.textContent"
       formControlName="password"
+      (focus)="this.passwordFocused = true"
+      (blur)="this.passwordFocused = false"
     />
+    <input-errors [hideErrors]="this.passwordFocused" [control]="this.form.controls.password"> </input-errors>
   </div>
   <div>
     <label for="email" #email>Email Address</label>
-    <input [id]="email.attributes.getNamedItem('for')" type="text" [placeholder]="email.textContent" formControlName="email" />
+    <input
+      [id]="email.attributes.getNamedItem('for')"
+      type="text"
+      [placeholder]="email.textContent"
+      formControlName="email"
+      (focus)="this.emailFocused = true"
+      (blur)="this.emailFocused = false"
+    />
+    <input-errors [hideErrors]="this.emailFocused" [control]="this.form.controls.email"> </input-errors>
   </div>
   <aside>
     <div>Already have an account? Sign in <a [routerLink]="'/authentication/sign-in'">here</a>.</div>
   </aside>
   <footer>
+    <div>
+      <strong>{{ this.errorMessage }}</strong>
+    </div>
     <button type="submit">Create Account</button>
   </footer>
 </form>

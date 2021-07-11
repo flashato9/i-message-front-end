@@ -7,7 +7,11 @@
       type="text"
       [placeholder]="username.textContent"
       formControlName="username"
+      (focus)="this.usernameFocused = true"
+      (blur)="this.usernameFocused = false"
+      #inputs
     />
+    <input-errors [hideErrors]="this.usernameFocused" [control]="this.form.controls.username"> </input-errors>
   </div>
   <div>
     <label for="password" #password>Password</label>
@@ -16,13 +20,20 @@
       type="password"
       [placeholder]="password.textContent"
       formControlName="password"
+      (focus)="this.passwordFocused = true"
+      (blur)="this.passwordFocused = false"
     />
+
+    <input-errors [hideErrors]="this.passwordFocused" [control]="this.form.controls.password"> </input-errors>
   </div>
   <aside>
     <div>Forgot your password? <a [routerLink]="'./reset-password'">Reset password</a>.</div>
     <div>No account? <a [routerLink]="'../sign-up'">Create account</a>.</div>
   </aside>
   <footer>
+    <div>
+      <strong>{{ this.errorMessage }}</strong>
+    </div>
     <button type="submit">Sign-in</button>
   </footer>
 </form>

@@ -18,19 +18,20 @@ const signInRoutes: Routes = [
     component: ResetPasswordComponent,
   },
   {
-    path: 'sign-in/reset-password/confirm-reset-password',
+    path: 'sign-in/reset-password/:username/confirm-reset-password',
     component: ConfirmResetPasswordComponent,
   },
 ];
 const signUpRoutes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   {
-    path: 'sign-up/confirm-sign-up',
+    path: 'sign-up/:username/confirm-sign-up',
     component: ConfirmSignUpComponent,
   },
 ];
 const homePageRoutes: Routes = [];
 const routes: Routes = [
+  { path: '', redirectTo: 'authentication', pathMatch: 'full' }, //testing
   {
     path: 'authentication',
     component: AuthenticationComponent,

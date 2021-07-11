@@ -12,14 +12,25 @@
   <div id="code">
     <div>
       <label for="code" #confirmCode>Confirmation code</label>
-      <input [id]="confirmCode.attributes.getNamedItem('for')" type="number" formControlName="code" />
+      <input
+        [id]="confirmCode.attributes.getNamedItem('for')"
+        type="number"
+        formControlName="code"
+        (focus)="this.codeFocused = true"
+        (blur)="this.codeFocused = false"
+      />
+      <input-errors [hideErrors]="this.codeFocused" [control]="this.form.controls.code"> </input-errors>
     </div>
-    <div>Lost your code? <a href="#">Resend code</a>.</div>
+    <div>Lost your code? <a (click)="this.resendCode()">Resend code</a>.</div>
   </div>
   <aside>
     <div>Already have an account? Sign in <a [routerLink]="'/authentication/sign-in'">here</a>.</div>
   </aside>
   <footer>
+    <div>
+      <strong>{{ this.errorMessage }}</strong>
+    </div>
+
     <button type="submit">Confirm</button>
   </footer>
 </form>
