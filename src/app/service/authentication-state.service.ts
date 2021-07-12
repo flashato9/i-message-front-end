@@ -22,7 +22,7 @@ export class AuthenticationStateService {
     return true;
   }
   /**
-   * sign out user if it exist.
+   * sign out user if it exists.
    * @postcond - Signs in user. If succesful, then save then token here. Regardless of success always return theresult of the call to be handled by the caller.
    */
   signOutUser() {
@@ -44,7 +44,6 @@ export class AuthenticationStateService {
     return this.signInTokenExistsandValid();
   }
   /**
-   *
    * @returns
    * @precond signedIn()===true
    */
